@@ -23,7 +23,7 @@ def install_selene():
 	os.chmod(file_name, 755)
 	print("Downloaded")
 	print("Test selene")
-	subprocess.check_call("selene --version", stdout=subprocess.STDOUT, stderr=subprocess.STDOUT, shell=True)
+	subprocess.check_call(f"{file_name} --version", stdout=subprocess.STDOUT, stderr=subprocess.STDOUT, shell=True)
 
 if __name__ == "__main__":
 	install_selene()
