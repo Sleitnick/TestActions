@@ -13,35 +13,19 @@ jobs:
         python-version: [3.8]
     steps:
     - uses: actions/checkout@v2
-    - name: Cache cargo registry
-      uses: actions/cache@v1
-      with:
-        path: ~/.cargo/registry
-        key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
-    - name: Cache cargo index
-      uses: actions/cache@v1
-      with:
-        path: ~/.cargo/git
-        key: ${{ runner.os }}-cargo-index-${{ hashFiles('**/Cargo.lock') }}
-    - name: Cache cargo build
-      uses: actions/cache@v1
-      with:
-        path: target
-        key: ${{ runner.os }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Install Python Dependencies
+    - name: Install Python dependencies
       run: |
         python3 -m pip install --upgrade pip
         pip install -r ./ci/requirements.txt -t ./ci
     - name: Install Selene
+      uses: actions-rs/install@v0.1
+      with:
+        crate: selene
+        version: latest
+    - name: Test Selene
       run: |
-        cargo install --git https://github.com/Kampfkarren/selene selene
         selene --version
-    # - name: Install Selene
-    #   working-directory: ./ci
-    #   run: |
-    #     pip install -r requirements.txt -t .
-    #     sudo python3 ./install_selene.py
