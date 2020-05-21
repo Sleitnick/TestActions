@@ -33,7 +33,7 @@ jobs:
           ${{ runner.os }}-cargo-build-target-2-
     - name: Install Selene
       run: |
-        cargo install --git https://github.com/Kampfkarren/selene selene
+        cargo install selene
     - name: Lint
       working-directory: ./src
       run: |
