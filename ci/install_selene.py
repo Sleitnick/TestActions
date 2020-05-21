@@ -20,6 +20,7 @@ def install_selene():
 	file_name = os.path.join(DOWNLOAD_DIR, "selene")
 	with open(file_name, "wb") as f:
 		f.write(file.content)
+		f.close()
 	os.chmod(file_name, 755)
 	print("Downloaded")
 	print("Test selene")
