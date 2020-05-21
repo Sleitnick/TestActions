@@ -22,7 +22,7 @@ def install_selene():
 		f.write(file.content)
 	os.chmod(file_name, 755)
 	print("Downloaded")
-	print("Test selene")
+	print("Test selene 2")
 	subprocess.check_call(f"{file_name} --version", stdout=subprocess.STDOUT, stderr=subprocess.STDOUT, shell=True)
 
 if __name__ == "__main__":
