@@ -17,12 +17,16 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: ${{matrix.python-version}}
-    - name: Install dependencies
+    - name: Install Python Dependencies
       run: |
         python3 -m pip install --upgrade pip
-        sudo apt-get install libssl-dev
+        pip install -r ./ci/requirements.txt -t ./ci
     - name: Install Selene
-      working-directory: ./ci
       run: |
-        pip install -r requirements.txt -t .
-        sudo python3 ./install_selene.py
+        cargo install --git https://github.com/Kampfkarren/selene selene
+        selene --version
+    # - name: Install Selene
+    #   working-directory: ./ci
+    #   run: |
+    #     pip install -r requirements.txt -t .
+    #     sudo python3 ./install_selene.py
