@@ -7,10 +7,11 @@ on:
 
 jobs:
   lint:
+    name: Lint
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-versions: [3.8]
+        python-version: [3.8]
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
@@ -19,11 +20,12 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       run: |
-        python3 -m pip install --upgrade pip
+        python --version
+        python -m pip install --upgrade pip
         pip install -r ./ci/requirements.txt -t ./ci
     - name: Install Selene
       run: |
-        python3 ./ci/download_selene.py
+        python ./ci/download_selene.py
     # - name: Cache cargo registry
     #   uses: actions/cache@v1
     #   with:
