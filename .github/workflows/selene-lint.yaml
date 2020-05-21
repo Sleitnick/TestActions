@@ -26,6 +26,7 @@ jobs:
       with:
         crate: selene
         version: latest
+        use-tool-cache: true
     - name: Lint
       working-directory: ./src
       run: |
