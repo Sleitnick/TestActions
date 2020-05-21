@@ -20,10 +20,9 @@ def install_selene():
 	file_name = os.path.join(DOWNLOAD_DIR, "selene")
 	with open(file_name, "wb") as f:
 		f.write(file.content)
-		f.close()
 	os.chmod(file_name, 755)
 	print("Downloaded")
-	print("Test selene")
+	print("Test selene 2")
 	subprocess.check_call(f"{file_name} --version", stdout=subprocess.STDOUT, stderr=subprocess.STDOUT, shell=True)
 
 if __name__ == "__main__":
